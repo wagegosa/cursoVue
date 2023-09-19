@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <div id="app">
+        <div>
+            <v-header>Titulo</v-header>
+            <div>
+                Lorem ipsum
+            </div>
+        </div>
+    </div>
+    <script>
+        const app = Vue.createApp({
+        })
+        app.component("v-header", {
+            template: ` <header><slot></slot>></header> `
+        });
+        const vm = createApp.mount('#app')
+    </script>
+</body>
+</html>

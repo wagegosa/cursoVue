@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <div id="app">
+        <div>
+            <h2>{{ altertext.titulo }}</h2>
+            <p>{{ altertext.subtitulo }}</p>
+            <input type="number" v-model="altertext.numero1"/>
+            <input type="number" v-model="altertext.numero2"/>
+            <button @click = "suma()">+</button>
+            <button @click = "resta()">-</button>
+            <button @click = "multiplicar()">*</button>
+            <button @click = "dividir()">/</button>
+            <button @click = "restart()">Reset</button>
+        </div>
+        <p>{{ altertext.ressul }}</p>
+        
+    </div>
+    <script>
+        const { createApp } = Vue;
+        const counter = 0;
+
+        createApp({
+            data(){
+                return {
+                    altertext: {
+                        numero1: 0,
+                        numero2: 0,
+                        ressul: 0,
+                        titulo: 'Sumar y restar',
+                        subtitulo: 'Introduce el numero'
+                    }
+                }
+            },
+            methods: {
+                suma() {
+                    if (this.altertext.numero1 != 0 || this.altertext.numero2 != 0) {
+                        this.altertext.ressul = parseFloat(this.altertext.numero1) + parseFloat(this.altertext.numero2);
+                        console.log(this.altertext.ressul);
+                    }else{
+                        window.alert('Debe ingresar un muero.')
+                    }
+                },
+                resta() {
+                    if (this.altertext.numero1 != 0 || this.altertext.numero2 != 0) {
+                        this.altertext.ressul = parseFloat(this.altertext.numero1) - parseFloat(this.altertext.numero2);
+                        console.log(this.altertext.ressul);
+                    }else{
+                        window.alert('Debe ingresar un muero.')
+                    }
+                },
+                multiplicar() {
+                    if (this.altertext.numero1 != 0 || this.altertext.numero2 != 0) {
+                        this.altertext.ressul = parseFloat(this.altertext.numero1) * parseFloat(this.altertext.numero2);
+                        console.log(this.altertext.ressul);
+                    }else{
+                        window.alert('Debe ingresar un muero.')
+                    }
+                },
+                dividir() {
+                    if (this.altertext.numero1 != 0 || this.altertext.numero2 != 0) {
+                        this.altertext.ressul = parseFloat(this.altertext.numero1) / parseFloat(this.altertext.numero2);
+                        console.log(this.altertext.ressul);
+                    }else{
+                        window.alert('Debe ingresar un muero.')
+                    }
+                },
+                restart() {
+                    this.altertext.ressul = counter;
+                    this.altertext.numero1 = counter;
+                    this.altertext.numero2 = counter;
+                    console.clear();
+                    console.log('Limpia y Reinicia: ', this.altertext.text);
+                }
+            },
+        }).mount('#app')
+    </script>
+</body>
+</html>

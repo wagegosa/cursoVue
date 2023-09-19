@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <div id="app">
+        <div>
+           <ul>
+            <!-- <v-item 
+                v-for="(item, i) in items" 
+                v-bind:text="item"
+                @click="remover(i)"
+            /> -->
+            <v-item 
+                v-for="(item, i) in items" 
+                v-bind:text="item"
+                @remover="remover(i)"
+            />
+           </ul>
+        </div>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    items: ["uno", "dos", "tres", "cuatro"]
+                };
+            },
+            methods:{
+                remover(i) {
+                    const items = this.items.filter((el, index) => index !== i);
+                    this.items = items;
+                }
+            },
+            template:``,
+        });
+        app.component("v-item", {
+            // props: ["text"],
+            // props: {
+            //     text: String
+            // },
+            props: {
+                text: String
+                // text: {
+                //     default: "Texto vacio"
+                // }
+            },
+            methods: {
+                rm() {
+                    this.$emit("remover")
+                }
+            },
+            template: `<li @click="rm"> {{ text }} </li>`,
+        })
+        const vm = app.mount('#app');
+    </script>
+</body>
+</html>

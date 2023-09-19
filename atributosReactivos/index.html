@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <div id="app">
+        {{ text }}
+        <figure>
+            <img v-bind='alterImg'>
+        </figure>
+    </div>
+    <script>
+        Vue.createApp({
+            data(){
+                return {
+                    text: 'Hola vue.',
+                    alterImg: {
+                        src: "https://cdn.britannica.com/17/83817-050-67C814CD/Mount-Everest.jpg",
+                        attr: "Monte Everest",
+                        width: '400'
+                    } 
+                }
+            },
+        }).mount('#app')
+    </script>
+</body>
+</html>

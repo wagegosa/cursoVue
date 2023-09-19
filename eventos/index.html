@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <div id="app">
+        <div>
+            <button @click = "increase()">+</button>
+            <button @click = "decrease()">-</button>
+            <button @click = "restart()">Reset</button>
+            <p>Resultado</p>
+            <span>{{ counter }}</span>
+        </div>
+    </div>
+    <script>
+        const { createApp } = Vue;
+        const initialValue = 0;
+
+        createApp({
+            data(){
+                return {
+                     counter: initialValue
+                }
+            },
+            methods: {
+                increase() {
+                     this.counter++;
+                     console.log('Aumenta: ', this.counter);
+                },
+                decrease() {
+                    this.counter--;
+                    console.log('Disminuye: ', this.counter);
+                },
+                restart() {
+                    this.counter = initialValue;
+                    console.clear();
+                    console.log('Limpia y Reinicia: ', this.counter);
+                }
+            },
+            template: ``
+        }).mount('#app')
+    </script>
+</body>
+</html>
